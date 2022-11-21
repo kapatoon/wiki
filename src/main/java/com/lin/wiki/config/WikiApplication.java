@@ -11,6 +11,7 @@ import org.springframework.core.env.Environment;
 @ComponentScan("com.lin")
 @MapperScan("com.lin.wiki.mapper")
 @SpringBootApplication
+/* Tips: SpringBootApplication只会扫描Application文件所在目录的内容，所以需要添加ComponentScan */
 public class WikiApplication {
 
     private static final Logger LOG = LoggerFactory.getLogger(WikiApplication.class);
