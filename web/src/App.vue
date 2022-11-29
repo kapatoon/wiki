@@ -1,17 +1,25 @@
 <template>
   <a-layout>
     <TheHeader />
-    <router-view></router-view>
+    <router-view />
     <TheFooter />
   </a-layout>
 </template>
 
-<script setup>
+<script lang="ts">
+import {defineComponent} from "vue";
 import TheHeader from "./components/the-header.vue"
 import TheFooter from "./components/the-footer.vue"
+export default defineComponent({
+  name: 'app',
+  components: {
+    TheHeader,
+    TheFooter
+  }
+})
 </script>
 
-<style scoped>
+<style>
 #components-layout-demo-top-side-2 .logo {
   float: left;
   width: 120px;

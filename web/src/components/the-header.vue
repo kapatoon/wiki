@@ -15,9 +15,10 @@
 </template>
 
 <script>
-export default {
+import {defineComponent} from "vue";
+export default defineComponent({
   name: "the-header"
-}
+})
 </script>
 
 <style scoped>
