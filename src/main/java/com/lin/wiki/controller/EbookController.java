@@ -3,6 +3,7 @@ package com.lin.wiki.controller;
 import com.lin.wiki.req.EbookReq;
 import com.lin.wiki.resp.CommonResp;
 import com.lin.wiki.resp.EbookResp;
+import com.lin.wiki.resp.PageResp;
 import com.lin.wiki.service.EbookService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,8 @@ public class EbookController {
 
     @GetMapping("/list")
     public CommonResp getEbookList(EbookReq ebookReq) {
-        CommonResp<List<EbookResp>> resp = new CommonResp<>();
-        List<EbookResp> ebookList = ebookService.getEbookList(ebookReq);
+        CommonResp<PageResp<EbookResp>> resp = new CommonResp<>();
+        PageResp<EbookResp> ebookList = ebookService.getEbookList(ebookReq);
         resp.setContent(ebookList);
         return resp;
     }
