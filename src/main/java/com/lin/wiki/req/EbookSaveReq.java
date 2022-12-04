@@ -1,6 +1,6 @@
-package com.lin.wiki.resp;
+package com.lin.wiki.req;
 
-public class EbookResp {
+public class EbookSaveReq {
     private Long id;
 
     private String name;
