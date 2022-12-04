@@ -1,5 +1,6 @@
 package com.lin.wiki.service;
 
+import com.github.pagehelper.PageHelper;
 import com.lin.wiki.entity.Ebook;
 import com.lin.wiki.entity.EbookExample;
 import com.lin.wiki.mapper.EbookMapper;
@@ -23,8 +24,9 @@ public class EbookService {
         EbookExample.Criteria criteria = ebookExample.createCriteria();
         if(!ObjectUtils.isEmpty(ebookReq.getName()))
             criteria.andNameLike("%" + ebookReq.getName() + "%");
-        List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
 
+        PageHelper.startPage(1, 3);
+        List<Ebook> ebookList = ebookMapper.selectByExample(ebookExample);
         List<EbookResp> respList = CopyUtil.copyList(ebookList, EbookResp.class);
         return respList;
     }
