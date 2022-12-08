@@ -183,6 +183,12 @@ export default defineComponent({
           level1.value = [];
           level1.value = Tool.array2Tree(categorys, 0);
           console.log("树形结构：", level1);
+
+          // 异步问题，先简单解决（改顺序）
+          handleQuery({
+            page: pagination.value.current,
+            size: pagination.value.pageSize
+          });
         } else {
           message.error(data.message);
         }
@@ -214,10 +220,6 @@ export default defineComponent({
 
     onMounted(() => {
       handleQueryCategory();
-      handleQuery({
-        page: pagination.value.current,
-        size: pagination.value.pageSize
-      });
     });
 
     // -------- 表单 ---------
