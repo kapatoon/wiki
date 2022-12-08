@@ -67,11 +67,12 @@
       <a-form-item label="名称">
         <a-input v-model:value="ebook.name" />
       </a-form-item>
-      <a-form-item label="分类一">
-        <a-input v-model:value="ebook.category1Id" />
-      </a-form-item>
-      <a-form-item label="分类二">
-        <a-input v-model:value="ebook.category2Id" />
+      <a-form-item label="分类">
+        <a-cascader
+            v-model:value="categoryIds"
+            :field-names="{ label: 'name', value: 'id', children: 'children' }"
+            :options="level1"
+        />
       </a-form-item>
       <a-form-item label="描述">
         <a-input v-model:value="ebook.description" type="textarea" />
@@ -164,6 +165,30 @@ export default defineComponent({
       });
     };
 
+    const level1 = ref(); // 一级分类树，children属性就是二级分类
+    /**
+     * 数据查询
+     **/
+    const handleQueryCategory = () => {
+      loading.value = true;
+      // 如果不清空现有数据，则编辑保存重新加载数据后，再点编辑，则列表显示的还是编辑前的数据
+      level1.value = [];
+      axios.get("/category/all").then((response) => {
+        loading.value = false;
+        const data = response.data;
+        if (data.success) {
+          const categorys = data.content;
+          console.log("原始数组：", categorys);
+
+          level1.value = [];
+          level1.value = Tool.array2Tree(categorys, 0);
+          console.log("树形结构：", level1);
+        } else {
+          message.error(data.message);
+        }
+      });
+    };
+
     /**
      * 表格点击页码时触发
      */
@@ -176,6 +201,7 @@ export default defineComponent({
     };
 
     onMounted(() => {
+      handleQueryCategory();
       handleQuery({
         page: pagination.value.current,
         size: pagination.value.pageSize
@@ -183,11 +209,14 @@ export default defineComponent({
     });
 
     // -------- 表单 ---------
-    const ebook = ref({});
+    const categoryIds = ref();
+    const ebook = ref();
     const modalVisible = ref(false);
     const modalLoading = ref(false);
     const handleModalOk = () => {
       modalLoading.value = true;
+      ebook.value.category1Id = categoryIds.value[0];
+      ebook.value.category2Id = categoryIds.value[1];
       axios.post("/ebook/save", ebook.value).then((response) => {
         modalLoading.value = false;
         const data = response.data; // data = commonResp
@@ -219,6 +248,7 @@ export default defineComponent({
     const add = () => {
       modalVisible.value = true;
       ebook.value = {};
+      categoryIds.value = [ebook.value.category1Id, ebook.value.category2Id]
     };
 
     /**
@@ -254,7 +284,9 @@ export default defineComponent({
       ebook,
       modalVisible,
       modalLoading,
-      handleModalOk
+      handleModalOk,
+      categoryIds,
+      level1
     }
   }
 })
