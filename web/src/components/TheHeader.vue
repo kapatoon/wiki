@@ -12,6 +12,9 @@
       <a-menu-item key="/admin/ebooks">
         <router-link to="/admin/ebooks">电子书管理</router-link>
       </a-menu-item>
+      <a-menu-item key="/admin/categorys">
+        <router-link to="/admin/categorys">分类管理</router-link>
+      </a-menu-item>
     </a-menu>
   </a-layout-header>
 </template>
