@@ -3,7 +3,7 @@ package com.lin.wiki.resp;
 public class DocQueryResp {
     private Long id;
 
-    private Long eboodId;
+    private Long ebookId;
 
     private Long parent;
 
@@ -23,12 +23,12 @@ public class DocQueryResp {
         this.id = id;
     }
 
-    public Long getEboodId() {
-        return eboodId;
+    public Long getEbookId() {
+        return ebookId;
     }
 
-    public void setEboodId(Long eboodId) {
-        this.eboodId = eboodId;
+    public void setEbookId(Long ebookId) {
+        this.ebookId = ebookId;
     }
 
     public Long getParent() {
@@ -78,7 +78,7 @@ public class DocQueryResp {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", eboodId=").append(eboodId);
+        sb.append(", ebookId=").append(ebookId);
         sb.append(", parent=").append(parent);
         sb.append(", name=").append(name);
         sb.append(", sort=").append(sort);

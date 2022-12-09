@@ -6,7 +6,7 @@ public class DocSaveReq {
     private Long id;
 
     @NotNull(message = "【电子书】不能为空")
-    private Long eboodId;
+    private Long ebookId;
 
     @NotNull(message = "【父文档】不能为空")
     private Long parent;
@@ -29,12 +29,12 @@ public class DocSaveReq {
         this.id = id;
     }
 
-    public Long getEboodId() {
-        return eboodId;
+    public Long getEbookId() {
+        return ebookId;
     }
 
-    public void setEboodId(Long eboodId) {
-        this.eboodId = eboodId;
+    public void setEbookId(Long ebookId) {
+        this.ebookId = ebookId;
     }
 
     public Long getParent() {
@@ -84,7 +84,7 @@ public class DocSaveReq {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", eboodId=").append(eboodId);
+        sb.append(", ebookId=").append(ebookId);
         sb.append(", parent=").append(parent);
         sb.append(", name=").append(name);
         sb.append(", sort=").append(sort);

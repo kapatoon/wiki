@@ -3,7 +3,7 @@
 <mapper namespace="com.lin.wiki.mapper.DocMapper">
   <resultMap id="BaseResultMap" type="com.lin.wiki.entity.Doc">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="ebood_id" jdbcType="BIGINT" property="eboodId" />
+    <result column="ebook_id" jdbcType="BIGINT" property="ebookId" />
     <result column="parent" jdbcType="BIGINT" property="parent" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="sort" jdbcType="INTEGER" property="sort" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, ebood_id, parent, `name`, sort, view_count, vote_count
+    id, ebook_id, parent, `name`, sort, view_count, vote_count
   </sql>
   <select id="selectByExample" parameterType="com.lin.wiki.entity.DocExample" resultMap="BaseResultMap">
     select
@@ -102,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.lin.wiki.entity.Doc">
-    insert into doc (id, ebood_id, parent, 
+    insert into doc (id, ebook_id, parent, 
       `name`, sort, view_count, 
       vote_count)
-    values (#{id,jdbcType=BIGINT}, #{eboodId,jdbcType=BIGINT}, #{parent,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{ebookId,jdbcType=BIGINT}, #{parent,jdbcType=BIGINT}, 
       #{name,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, 
       #{voteCount,jdbcType=INTEGER})
   </insert>
@@ -115,8 +115,8 @@
       <if test="id != null">
         id,
       </if>
-      <if test="eboodId != null">
-        ebood_id,
+      <if test="ebookId != null">
+        ebook_id,
       </if>
       <if test="parent != null">
         parent,
@@ -138,8 +138,8 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="eboodId != null">
-        #{eboodId,jdbcType=BIGINT},
+      <if test="ebookId != null">
+        #{ebookId,jdbcType=BIGINT},
       </if>
       <if test="parent != null">
         #{parent,jdbcType=BIGINT},
@@ -170,8 +170,8 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.eboodId != null">
-        ebood_id = #{record.eboodId,jdbcType=BIGINT},
+      <if test="record.ebookId != null">
+        ebook_id = #{record.ebookId,jdbcType=BIGINT},
       </if>
       <if test="record.parent != null">
         parent = #{record.parent,jdbcType=BIGINT},
@@ -196,7 +196,7 @@
   <update id="updateByExample" parameterType="map">
     update doc
     set id = #{record.id,jdbcType=BIGINT},
-      ebood_id = #{record.eboodId,jdbcType=BIGINT},
+      ebook_id = #{record.ebookId,jdbcType=BIGINT},
       parent = #{record.parent,jdbcType=BIGINT},
       `name` = #{record.name,jdbcType=VARCHAR},
       sort = #{record.sort,jdbcType=INTEGER},
@@ -209,8 +209,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lin.wiki.entity.Doc">
     update doc
     <set>
-      <if test="eboodId != null">
-        ebood_id = #{eboodId,jdbcType=BIGINT},
+      <if test="ebookId != null">
+        ebook_id = #{ebookId,jdbcType=BIGINT},
       </if>
       <if test="parent != null">
         parent = #{parent,jdbcType=BIGINT},
@@ -232,7 +232,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lin.wiki.entity.Doc">
     update doc
-    set ebood_id = #{eboodId,jdbcType=BIGINT},
+    set ebook_id = #{ebookId,jdbcType=BIGINT},
       parent = #{parent,jdbcType=BIGINT},
       `name` = #{name,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},

@@ -164,63 +164,63 @@ public class DocExample {
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdIsNull() {
-            addCriterion("ebood_id is null");
+        public Criteria andEbookIdIsNull() {
+            addCriterion("ebook_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdIsNotNull() {
-            addCriterion("ebood_id is not null");
+        public Criteria andEbookIdIsNotNull() {
+            addCriterion("ebook_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdEqualTo(Long value) {
-            addCriterion("ebood_id =", value, "eboodId");
+        public Criteria andEbookIdEqualTo(Long value) {
+            addCriterion("ebook_id =", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdNotEqualTo(Long value) {
-            addCriterion("ebood_id <>", value, "eboodId");
+        public Criteria andEbookIdNotEqualTo(Long value) {
+            addCriterion("ebook_id <>", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdGreaterThan(Long value) {
-            addCriterion("ebood_id >", value, "eboodId");
+        public Criteria andEbookIdGreaterThan(Long value) {
+            addCriterion("ebook_id >", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdGreaterThanOrEqualTo(Long value) {
-            addCriterion("ebood_id >=", value, "eboodId");
+        public Criteria andEbookIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("ebook_id >=", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdLessThan(Long value) {
-            addCriterion("ebood_id <", value, "eboodId");
+        public Criteria andEbookIdLessThan(Long value) {
+            addCriterion("ebook_id <", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdLessThanOrEqualTo(Long value) {
-            addCriterion("ebood_id <=", value, "eboodId");
+        public Criteria andEbookIdLessThanOrEqualTo(Long value) {
+            addCriterion("ebook_id <=", value, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdIn(List<Long> values) {
-            addCriterion("ebood_id in", values, "eboodId");
+        public Criteria andEbookIdIn(List<Long> values) {
+            addCriterion("ebook_id in", values, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdNotIn(List<Long> values) {
-            addCriterion("ebood_id not in", values, "eboodId");
+        public Criteria andEbookIdNotIn(List<Long> values) {
+            addCriterion("ebook_id not in", values, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdBetween(Long value1, Long value2) {
-            addCriterion("ebood_id between", value1, value2, "eboodId");
+        public Criteria andEbookIdBetween(Long value1, Long value2) {
+            addCriterion("ebook_id between", value1, value2, "ebookId");
             return (Criteria) this;
         }
 
-        public Criteria andEboodIdNotBetween(Long value1, Long value2) {
-            addCriterion("ebood_id not between", value1, value2, "eboodId");
+        public Criteria andEbookIdNotBetween(Long value1, Long value2) {
+            addCriterion("ebook_id not between", value1, value2, "ebookId");
             return (Criteria) this;
         }
 
