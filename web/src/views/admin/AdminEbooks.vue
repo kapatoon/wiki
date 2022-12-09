@@ -37,7 +37,7 @@
         </template>
         <template v-slot:action="{ text, record }">
           <a-space size="small">
-            <router-link to="/admin/docs">
+            <router-link :to="'/admin/docs?ebookId=' + record.id">
               <a-button type="primary">
                 阅读
               </a-button>
@@ -171,8 +171,9 @@ export default defineComponent({
 
     const level1 = ref(); // 一级分类树，children属性就是二级分类
     let categorys: any;
+
     /**
-     * 数据查询
+     * 分类数据查询
      **/
     const handleQueryCategory = () => {
       loading.value = true;
