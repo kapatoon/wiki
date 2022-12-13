@@ -74,6 +74,11 @@
       <a-form-item label="顺序">
         <a-input v-model:value="doc.sort" />
       </a-form-item>
+      <a-form-item label="内容">
+        <div id="content">
+
+        </div>
+      </a-form-item>
     </a-form>
   </a-modal>
 </template>
@@ -84,6 +89,8 @@ import { message } from 'ant-design-vue';
 import axios from 'axios';
 import { Tool } from "@/utils/tool";
 import { useRoute } from "vue-router";
+// import ExclamationCircleOutlined from "@ant-design/icons-vue/ExclamationCircleOutlined";
+import E from 'wangeditor'
 
 export default defineComponent({
   name: 'AdminDoc',
@@ -162,6 +169,8 @@ export default defineComponent({
     const doc = ref({});
     const modalVisible = ref(false);
     const modalLoading = ref(false);
+    const editor = new E('#content');
+
     const handleModalOk = () => {
       console.log(doc.value)
       modalLoading.value = true;
@@ -192,6 +201,10 @@ export default defineComponent({
       // 为选择树添加一个"无"
       treeSelectData.value.unshift({id: 0, name: '无'});
       console.log(treeSelectData);
+      // 显示富文本框
+      setTimeout(() => {
+        editor.create();
+      }, 100);
     };
 
     /**
@@ -271,6 +284,11 @@ export default defineComponent({
       // 为选择树添加一个"无"
       treeSelectData.value.unshift({id: 0, name: '无'});
       console.log(treeSelectData);
+
+      // 显示富文本框
+      setTimeout(() => {
+        editor.create();
+      }, 100);
     };
 
     /**
