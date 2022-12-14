@@ -148,7 +148,7 @@ export default defineComponent({
     level1.value = [];
 
     /**
-     * 分类数据查询
+     * 列表数据查询
      **/
     const handleQuery = () => {
       loading.value = true;
@@ -169,6 +169,7 @@ export default defineComponent({
         }
       });
     };
+
 
     onMounted(() => {
       handleQuery();
@@ -194,10 +195,12 @@ export default defineComponent({
         const data = response.data; // data = commonResp
 
         if(data.success){
-          modalVisible.value = false;
+          message.error("保存成功！");
 
           // 重新加载列表
           handleQuery();
+        } else {
+          message.error(data.message);
         }
       });
     };
@@ -206,8 +209,12 @@ export default defineComponent({
      * 编辑
      */
     const edit = (record: any) => {
+      //清空富文本
+      editor.txt.html("");
+
       modalVisible.value = true;
       doc.value = Tool.copy(record);
+      handleQueryContent();
 
       // 不能选择当前节点及其所有子孙节点，作为父节点，会使树断开
       treeSelectData.value = Tool.copy(level1.value);
@@ -285,6 +292,9 @@ export default defineComponent({
      * 新增
      */
     const add = () => {
+      //清空富文本
+      editor.txt.html("");
+
       modalVisible.value = true;
       doc.value = {
         ebookId: route.query.ebookId
@@ -309,6 +319,20 @@ export default defineComponent({
         if (data.success) {
           // 重新加载列表
           handleQuery();
+        }
+      });
+    };
+
+    /**
+     * 内容查询
+     **/
+    const handleQueryContent = () => {
+      axios.get("/doc/find-content/" + doc.value.id).then((response) => {
+        const data = response.data;
+        if (data.success) {
+          editor.txt.html(data.content);
+        } else {
+          message.error(data.message);
         }
       });
     };
