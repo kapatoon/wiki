@@ -31,8 +31,9 @@ public class DocService {
     @Resource
     private SnowFlake snowFlake;
 
-    public List<DocQueryResp> getAllDocs(){
+    public List<DocQueryResp> getAllDocs(Long ebookId){
         DocExample docExample = new DocExample();
+        docExample.createCriteria().andEbookIdEqualTo(ebookId); //不能是动态查询
         docExample.setOrderByClause("sort asc");
         List<Doc> docList = docMapper.selectByExample(docExample);
 
