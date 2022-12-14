@@ -2,8 +2,10 @@ package com.lin.wiki.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.lin.wiki.entity.Content;
 import com.lin.wiki.entity.Doc;
 import com.lin.wiki.entity.DocExample;
+import com.lin.wiki.mapper.ContentMapper;
 import com.lin.wiki.mapper.DocMapper;
 import com.lin.wiki.req.DocQueryReq;
 import com.lin.wiki.req.DocSaveReq;
@@ -22,6 +24,9 @@ public class DocService {
 
     @Resource
     private DocMapper docMapper;
+
+    @Resource
+    private ContentMapper contentMapper;
 
     @Resource
     private SnowFlake snowFlake;
@@ -52,13 +57,20 @@ public class DocService {
 
     public void save(DocSaveReq req) {
         Doc doc = CopyUtil.copy(req, Doc.class);
+        Content content = CopyUtil.copy(req, Content.class);
         if (ObjectUtils.isEmpty(req.getId())) {
+            Long id = snowFlake.nextId();
+
             //新增
-            doc.setId(snowFlake.nextId());
+            doc.setId(id);
             docMapper.insert(doc);
+            content.setId(id);
+            contentMapper.insert(content);
         } else {
             // 更新
             docMapper.updateByPrimaryKey(doc);
+            if(contentMapper.updateByPrimaryKeyWithBLOBs(content) == 0)
+                contentMapper.insert(content);
         }
     }
 
